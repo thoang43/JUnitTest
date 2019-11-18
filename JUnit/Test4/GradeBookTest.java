@@ -1,18 +1,16 @@
-//import GradeBookPack.GradeBook;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-class GradeBookTester {
+public class GradeBookTest {
 	private GradeBook gradeBook1;
 	private GradeBook gradeBook2;
 	
-	@BeforeEach
-	void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		gradeBook1 = new GradeBook(5);
 		gradeBook2 = new GradeBook(5);
 		
@@ -25,14 +23,14 @@ class GradeBookTester {
 		
 	}
 
-	@AfterEach
-	void tearDown() throws Exception {
+	@After
+	public void tearDown() throws Exception {
 		gradeBook1 = null;
 		gradeBook2 = null;
 	}
 
 	@Test
-	void testAddScore() {
+	public void testAddScore() {
 		assertTrue(gradeBook1.toString().equals("95.0 80.0 75.0"));
 		assertTrue(gradeBook2.toString().equals("98.0 72.0"));
 		assertEquals(gradeBook1.getScoresSize(),3,0.001);
@@ -40,33 +38,33 @@ class GradeBookTester {
 	}
 
 	@Test
-	void testSum() {
-		//Change
-		assertEquals(gradeBook1.sum(), 1000,0.001);
+	public void testSum() {
+		assertEquals(gradeBook1.sum(),250,0.001);
 		assertEquals(gradeBook2.sum(),170,0.001);
 	}
 
 	@Test
-	void testMinimum() {
-		//75
+	public void testMinimum() {
+		//75 to 100
 		assertEquals(gradeBook1.minimum(),100,0.001);
 		assertEquals(gradeBook2.minimum(),72,0.001);
 	}
 
 	@Test
-	void testFinalScore() {
-		assertEquals(gradeBook1.finalScore(),175,0.001);
+	public void testFinalScore() {
+		//175 to 200
+		assertEquals(gradeBook1.finalScore(),200,0.001);
 		assertEquals(gradeBook2.finalScore(),98,0.001);
 	}
 
 	@Test
-	void testGetScoresSize() {
+	public void testGetScoresSize() {
 		assertEquals(gradeBook1.getScoresSize(),3,0.001);
 		assertEquals(gradeBook2.getScoresSize(),2,0.001);
 	}
 
 	@Test
-	void testToString() {
+	public void testToString() {
 		assertTrue(gradeBook1.toString().equals("95.0 80.0 75.0"));
 		assertTrue(gradeBook2.toString().equals("98.0 72.0"));
 	}
