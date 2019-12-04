@@ -1,7 +1,18 @@
 #!/bin/bash
 root="$1"
+: > "$root"/draft_file.txt
+: > "$root"/result_file.txt
+
+for file in "$root"/*; do
+	if [[ $file == *.java ]]; then
+		privateFile=${file}
+	fi
+done
+
+
 for f in "$root"/*; do
 	if [ -d ${f} ]; then
+		cp $privateFile ${f}
 		basename "$f" | cut -d'_' -f 1 >> "$root"/draft_file.txt
 		cd ${f}
 		mkdir -p out
@@ -15,3 +26,4 @@ done
 javac Runner.java 
 java Runner "$root"/"draft_file.txt" "$root"/"result_file.txt" 
 
+echo "DONE"

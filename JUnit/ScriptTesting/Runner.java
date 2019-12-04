@@ -18,16 +18,11 @@ public class Runner {
 			
 			String last=sc.nextLine();
 			String current=sc.nextLine();
-			if(!last.trim().startsWith("at") 
-					&& !last.trim().startsWith("Started")
-					&& !last.trim().startsWith("Finished")) {
-					bw.write(last + "\n");
-			}
-			if(!current.trim().startsWith("at")
-					&& !current.trim().startsWith("Started")
-					&& !current.trim().startsWith("Finished")) {
-					bw.write(current + "\n");
-			}
+			
+			bw.write(last + "\n");
+			
+			bw.write(current + "\n");
+			
 			String next="";
 			while(sc.hasNextLine()) {
 				
@@ -36,7 +31,8 @@ public class Runner {
 				
 				if(!next.trim().startsWith("at")
 					&& !next.trim().startsWith("Started")
-					&& !next.trim().startsWith("Finished")) {
+					&& !next.trim().startsWith("Finished")
+					&& !next.trim().contains("Exception:")) {
 					bw.write(next + "\n");
 				}
 				if(next.contains("Exception")){
