@@ -3,6 +3,8 @@ set root=%1
 break>%root%\draft_file.txt
 break>%root%\result_file.txt
 
+
+
 FOR %%I IN (%root%\*.java) DO (
 	FOR /D %%J IN (%root%\*) do (
 		COPY %%I %%J
@@ -16,6 +18,9 @@ FOR /D %%F IN (%root%\*) DO (
 	)
 
 	cd %%F
+	IF EXIST out (
+		RMDIR /S /Q out
+	)
 	mkdir out
 	javac -d out -cp ..\junit-platform-console-standalone-1.5.2.jar *.java
 	java -jar ..\junit-platform-console-standalone-1.5.2.jar --class-path out --scan-classpath --disable-ansi-colors --disable-banner --details=flat >> ..\draft_file.txt	
