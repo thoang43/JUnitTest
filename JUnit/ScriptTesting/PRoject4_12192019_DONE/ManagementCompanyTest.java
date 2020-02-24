@@ -44,15 +44,7 @@ public class ManagementCompanyTest {
 		assertEquals(m.addProperty("Lakewood", "Rockville", 3000, "Alex Tan",3,6,2,2),-1,0);  //exceeds the size of the array and can not be added, add property should return -1	
 	}
  
-	@Test
-	public void testMaxPropertyRent() {
-		String maxPropRentArray = m.maxPropertyRent().split("\n")[3];
-		
-		
-		//System.out.println(Double.parseDouble(maxPropRentArray[3].split(" ")[3]));
-		assertTrue(maxPropRentArray.contains("2450.0"));
-		
-	}
+	
 
 	@Test
 	public void testTotalRent() {
