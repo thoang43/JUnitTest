@@ -7,6 +7,10 @@ import org.junit.Test;
 
 public class TicketTest
 {
+	Ticket ticket1;
+	Ticket ticket2;
+	Ticket ticket3;
+	
 	@Before
 	public void setUp() throws Exception {
 		ticket1 = new Ticket("Bob Brown",36, 25, true, false);
@@ -51,14 +55,7 @@ public class TicketTest
 	}
 
 	
-@Test
-	public void testGetSpeedLimit() {
-		//test the getName
-		assertTrue(25==ticket1.getSpeedLimit());
-		assertTrue(45==ticket2.getSpeedLimit());
-		assertTrue(45==ticket3.getSpeedLimit());
 
-	}
 	@Test
 	public void testIsSchoolZone() {
 		//test the getName
