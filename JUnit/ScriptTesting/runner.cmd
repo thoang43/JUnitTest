@@ -3,7 +3,7 @@ set root=%1
 break>%root%\draft_file.txt
 break>%root%\result_file.txt
 
-
+javac removePackage.java
 
 FOR %%I IN (%root%\*.java) DO (
 	FOR /D %%J IN (%root%\*) do (
@@ -21,6 +21,11 @@ FOR /D %%F IN (%root%\*) DO (
 	IF EXIST out (
 		RMDIR /S /Q out
 	)
+	
+	FOR %%K IN (.\*.java) DO (
+		java -cp ..\..\ removePackage %%K
+	)
+	
 	mkdir out
 	javac -d out -cp ..\junit-platform-console-standalone-1.5.2.jar *.java
 	java -jar ..\junit-platform-console-standalone-1.5.2.jar --class-path out --scan-classpath --disable-ansi-colors --disable-banner --details=flat >> ..\draft_file.txt	
